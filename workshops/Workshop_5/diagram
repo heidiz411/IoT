@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "author": "RERU - Faculty of Information Technology",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -9.4,
+      "left": -240,
+      "attrs": { "delayTime": "5", "inhibitTime": "1.2" }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": -100,
+      "left": 220,
+      "attrs": { "transistor": "pnp" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 140,
+      "left": 130,
+      "attrs": { "color": "red", "label": "STATUS" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 215.15,
+      "left": 134.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 140,
+      "left": 310,
+      "attrs": { "color": "yellow", "label": "LAMP" }
+    },
+    { "type": "wokwi-resistor", "id": "r2", "top": 215, "left": 300, "attrs": { "value": "220" } },
+    {
+      "type": "wokwi-text",
+      "id": "txt1",
+      "top": -140,
+      "left": -260,
+      "attrs": { "text": "Lab 5 : PIR -> Relay + LED", "fontSize": "18" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "pir1:VCC", "esp:3V3", "red", [ "h-55.38", "v-111.4", "h384", "v187.3" ] ],
+    [ "pir1:GND", "esp:GND.2", "black", [ "v109.4", "h59.56", "v-43" ] ],
+    [ "pir1:OUT", "esp:D13", "green", [ "v23", "h98.08", "v33.9" ] ],
+    [ "relay1:VCC", "esp:VIN", "red", [ "h-76", "v120", "h-201.6", "v119.5" ] ],
+    [ "relay1:GND", "esp:GND.1", "black", [ "h-37.6", "v195.8", "h-48", "v24.2" ] ],
+    [ "relay1:IN", "esp:D12", "gold", [ "v160", "h-239.2", "v32" ] ],
+    [ "esp:RX2", "led1:A", "green", [ "h42.7", "v23.6", "h48", "v47.6" ] ],
+    [ "led1:C", "r1:1", "black", [ "h-20.2", "v38.65" ] ],
+    [ "r1:2", "esp:GND.1", "black", [ "v40", "h-78", "v-111.8" ] ],
+    [ "relay1:COM", "esp:VIN", "red", [ "h88.4", "v146.8", "h-460.8", "v81.7" ] ],
+    [ "relay1:NO", "led2:A", "orange", [ "v2.4", "h59.6", "v239.6" ] ],
+    [ "led2:C", "r2:1", "black", [ "h-37", "v38.65" ] ],
+    [ "r2:2", "esp:GND.2", "black", [ "v60", "h-454.8", "v-131.65" ] ]
+  ],
+  "dependencies": {}
+}
