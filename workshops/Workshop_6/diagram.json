@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "author": "RERU-IT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -30,
+      "left": -240,
+      "attrs": { "lux": "500", "threshold": "2.5", "rl10": "50", "gamma": "0.7" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 60,
+      "left": 230,
+      "attrs": { "color": "red", "label": "LED4" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 140,
+      "left": 220,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt1",
+      "top": -130,
+      "left": -240,
+      "attrs": { "text": "Lab 6 : LDR -> LED (RERU)", "fontSize": "18" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+
+    [ "ldr1:VCC", "esp:3V3", "red", [ "v-30", "h200" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "v40", "h180" ] ],
+    [ "ldr1:AO", "esp:VP", "green", [ "v0", "h120" ] ],
+
+    [ "esp:D13", "led1:A", "gold", [ "h40", "v60" ] ],
+    [ "led1:C", "r1:1", "black", [ "v20" ] ],
+    [ "r1:2", "esp:GND.2", "black", [ "v40", "h-160" ] ]
+  ],
+  "dependencies": {}
+}

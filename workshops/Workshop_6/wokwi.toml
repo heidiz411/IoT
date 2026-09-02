@@ -1,0 +1,10 @@
+# ตำแหน่งไฟล์เฟิร์มแวร์ที่ Wokwi จะนำไปจำลอง
+# (พาธนี้ใช้กับการคอมไพล์ด้วย PlatformIO)
+[wokwi]
+version  = 1
+firmware = '.pio/build/esp32doit-devkit-v1/firmware.bin'
+elf      = '.pio/build/esp32doit-devkit-v1/firmware.elf'
+
+# ถ้าคอมไพล์ด้วย Arduino CLI แทน PlatformIO ให้ใช้ 2 บรรทัดนี้แทน
+# firmware = 'build/Workshop_6.ino.bin'
+# elf      = 'build/Workshop_6.ino.elf'
