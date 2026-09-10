@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "author": "RERU-IT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "gas1",
+      "top": -120,
+      "left": 230,
+      "attrs": { "ppm": "400", "threshold": "4.4" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 60,
+      "left": 250,
+      "attrs": { "volume": "0.3" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 150,
+      "left": -140,
+      "attrs": { "color": "red", "label": "ALARM" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 230,
+      "left": -150,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt1",
+      "top": -180,
+      "left": -60,
+      "attrs": { "text": "Lab 8.1 : MQ-2 Gas Alarm (RERU)", "fontSize": "18" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "gas1:VCC", "esp:3V3", "red", [ "v-30", "h-100" ] ],
+    [ "gas1:GND", "esp:GND.1", "black", [ "v-20", "h-80" ] ],
+    [ "gas1:AO", "esp:VP", "green", [ "v40", "h-140" ] ],
+    [ "bz1:2", "esp:D5", "gold", [ "v0", "h-80" ] ],
+    [ "bz1:1", "esp:GND.1", "black", [ "v40", "h-100" ] ],
+    [ "esp:RX2", "led1:A", "green", [ "h-40", "v100" ] ],
+    [ "led1:C", "r1:1", "black", [ "v20" ] ],
+    [ "r1:2", "esp:GND.2", "black", [ "v40", "h120" ] ]
+  ],
+  "dependencies": {}
+}

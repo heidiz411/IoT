@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "RERU-IT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -60,
+      "left": 250,
+      "attrs": { "distance": "100" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt1",
+      "top": -160,
+      "left": -40,
+      "attrs": { "text": "Lab 8.2 : HC-SR04 Distance (RERU)", "fontSize": "18" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:VCC", "esp:VIN", "red", [ "v-40", "h-120" ] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "v60", "h-100" ] ],
+    [ "ultrasonic1:TRIG", "esp:D5", "gold", [ "v20", "h-80" ] ],
+    [ "ultrasonic1:ECHO", "esp:D4", "purple", [ "v40", "h-60" ] ]
+  ],
+  "dependencies": {}
+}
